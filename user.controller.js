@@ -1,7 +1,8 @@
 var express=require('express');
 var app=express();
-var user=require('./user.model'), user=user.table;
+var user=require('./user.model');
 var db = require('./db.config'), sequelize = db.sequelize;
+var bcrypt=require('bcrypt');
 var bodyparser=require('body-parser');
 app.use(bodyparser.json());
 
@@ -34,9 +35,10 @@ app.get("/getUser",function(req,res){
 })
 
 app.post("/addUser",function(req,res){
+    var hashPassword=bcrypt.hashSync(req.body.password, 10);
     user.create({
         name: req.body.name,
-        password: req.body.password,
+        password: hashPassword,
         profession: req.body.profession,
         id: req.body.id
     }).then(result => {

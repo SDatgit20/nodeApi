@@ -27,7 +27,5 @@ sequelize.sync().then(() => {
     console.error('Unable to create table : ', error);
  });
  
- var user = {};
-
- user.table = User;
- module.exports = user;
+var user=User;
+module.exports = user;
