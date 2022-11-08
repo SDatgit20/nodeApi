@@ -1,4 +1,3 @@
-// const imodule=require('./index');
 var db = require('./db.config'),
   sequelize = db.sequelize,
   Sequelize = db.Sequelize;

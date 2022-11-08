@@ -1,13 +1,28 @@
 var Sequelize = require('sequelize');
-const sequelize = new Sequelize(
- 'spbdb',
- 'root',
- 'Srashti2604@',
-  {
-    host: 'localhost',
-    dialect: 'mysql'
+var sequelize;
+if(process.env.NODE_ENV == 'test'){
+  sequelize = new Sequelize(
+    'test',
+    'root',
+    'Srashti2604@',
+     {
+       host: 'localhost',
+       dialect: 'mysql'
+     }
+   );
+}
+
+else{
+  sequelize = new Sequelize(
+  'spbdb',
+  'root',
+  'Srashti2604@',
+   {
+     host: 'localhost',
+     dialect: 'mysql'
+   }
+ );
   }
-);
 
 sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');

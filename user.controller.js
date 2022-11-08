@@ -10,7 +10,7 @@ app.get("/users",function(req,res){
     sequelize.sync().then(() => {
 
         user.findAll().then(result => {
-            res.send(200,"User list "+"\n"+JSON.stringify(result));
+            // res.send(200,"User list "+"\n"+JSON.stringify(result));
         }).catch((error) => {
             res.status(500);
             console.error('Failed to retrieve data : ', error);
@@ -43,7 +43,7 @@ app.post("/addUser",function(req,res){
         id: req.body.id
     }).then(result => {
         res.status(201)
-        res.send("User added successfully!");
+        res.end("User added successfully!");
     }).catch((error) => {
         res.status(500).end();
         console.error('Failed to create a new record : ', error);
@@ -58,10 +58,10 @@ app.delete("/deleteUser",function(req,res){
         }
     }).then(() => {
         res.status(200);
-        res.send("Successfully deleted record.");
+        res.end("Successfully deleted record.");
     }).catch((error) => {
         res.status(500);
-        res.send('Failed to delete record : ', error);
+        res.end('Failed to delete record : ', error);
     });
 })
 
@@ -83,4 +83,5 @@ app.put("/editUser",function(req,res){
     });
 })
 
-app.listen(3000);
+app.listen(3001);
+module.exports = app;
