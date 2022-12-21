@@ -9,9 +9,9 @@ describe('Testing API endpoint', function () {
       request(app)
       .post('/addUser')
       .send({
-        name : "moomiiiii",
+        name : "Srashti",
         password : "Abcd@123",
-        profession : "habibi",
+        profession : "Developer",
         id: 1
       })
       .end(function (err, res) {
